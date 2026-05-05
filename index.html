@@ -462,13 +462,13 @@ const COUNTRIES = {
 };
 
 let currentCountry = 'KZ';
-let apiKey = localStorage.getItem('lexai_deepseek_key') || '';
+let apiKey = 'sk-7a79ec12a7b24ceba723cc8503b8ebc5';
 let demoMode = false;
-let history = []; // conversation history
+let history = [];
 
 // ── INIT ──
 window.onload = () => {
-  if (apiKey) { document.getElementById('apiModal').classList.add('hidden'); }
+  document.getElementById('apiModal').classList.add('hidden');
   renderChips();
   updateCountryUI();
 };
@@ -478,4 +478,8 @@ function saveApiKey() {
   if (!k.startsWith('sk-')) { alert('Неверный формат ключа. Должен начинаться с sk-'); return; }
   apiKey = k;
   localStorage.setItem('lexai_deepseek_key', k);
-  document.getElementById('apiModal').cla
+  document.getElementById('apiModal').classList.add('hidden');
+}
+
+function useDemo() {
+  dem
