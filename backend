@@ -1,1 +1,24 @@
 main.py
+from fastapi import FastAPI
+
+app = FastAPI(title="AI Legal Assistant")
+
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "message": "AI Legal Assistant backend работает"
+    }
+
+@app.get("/health")
+def health():
+    return {
+        "health": "good"
+    }
+@app.post("/chat")
+def chat(message: dict):
+    user_text = message.get("text", "")
+
+    return {
+        "answer": f"Вы спросили: '{user_text}'. Юрист скоро ответит."
+    }
